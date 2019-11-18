@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>按键修饰符</h1>
+    <br/>
+    <br/>
+    <input type="text" @keyup.13="input1" />
+    <br/>
+    <input type="text" @keyup.enter="input1" />
+    
+    
+  
+  <div style="margin: 100px 20px;">
+      <h2>实现</h2>
+      <ul>
+          <li>要求：只有在input中输出回车之后，才输出input中的内容</li>
+         <li>参考：<a target="_blank" href="https://cn.vuejs.org/v2/guide/events.html#%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6">按键修饰符</a> </li>
+      </ul>
+  </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+        },
+        methods:{
+            input1:function(e){
+                // if(e.keyCode==13){
+                //     console.log(e.target.value);
+                // }
+                console.log(e.target.value);
+            }
+        }
+    })
+
+</script>
+
+</html>

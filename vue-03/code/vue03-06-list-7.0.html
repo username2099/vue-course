@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue list渲染</title>
+   
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>v-for array 高级7</h1>
+    <ol >
+      <li v-for="(item,index) in persons">
+        <input type="checkbox" />
+        {{index}}-&gt;{{ item.name }}&nbsp;({{item.age}})
+        &nbsp;&nbsp;
+        <button @click="deletePerson(index)">删除</button>
+        &nbsp;&nbsp;
+        <button @click="updatePerson(index,{name:'newName',age:100})">更新</button>
+      </li>
+    </ol>
+    <div style="margin: 100px 20px;">
+        <h2>目前存在的问题</h2>
+        <ul>
+            <ol>现象：选中 1-&gt;name2 (11) ,点击删除第一个,发现 1-&gt;name3 (12) 被选中  </ol>
+            <ol>请完善：点击选中谁 点击删除其中任何一个 只要该元素没有删除 就应该保持原有状态</ol>
+            <ol>提示：<a href="https://cn.vuejs.org/v2/guide/list.html" target="_blank">参考官网</a> </ol>
+        </ul>
+    </div>
+    
+   
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+           persons:[
+               {name:'name1',age:10},
+               {name:'name2',age:11},
+               {name:'name3',age:12},
+               {name:'name4',age:13}
+           ]
+        },
+        methods:{
+            deletePerson(index){
+                console.log("deletePerson");
+                this.persons.splice(index,1)
+            },
+            updatePerson(index,newPerson){
+                console.log("updatePerson");
+                    // // error
+                    // this.persons[index]=newPerson;
+                    // console.log(this.persons[index]);
+                    // 方法
+                    this.persons.splice(index,1,newPerson);
+            }
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue list渲染</title>
+   
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>v-for array 高级5</h1>
+    <ol >
+      <li v-for="(item,index) in persons">
+        {{index}}-&gt;{{ item.name }}&nbsp;({{item.age}})
+        &nbsp;&nbsp;
+        <button @click="deletePerson(index)">删除</button>
+        &nbsp;&nbsp;
+        <button @click="updatePerson(index,{name:'newName',age:100})">更新</button>
+      </li>
+    </ol>
+    
+   
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+           persons:[
+               {name:'name1',age:10},
+               {name:'name2',age:11},
+               {name:'name3',age:12},
+               {name:'name4',age:13}
+           ]
+        },
+        methods:{
+            deletePerson(index){
+                console.log("deletePerson");
+                this.persons.splice(index,1)
+            },
+            updatePerson(index,newPerson){
+                console.log("updatePerson");
+                    // // error
+                    // this.persons[index]=newPerson;
+                    // console.log(this.persons[index]);
+                    // 方法
+                    this.persons.splice(index,1,newPerson);
+            }
+        }
+    })
+
+</script>
+
+</html>

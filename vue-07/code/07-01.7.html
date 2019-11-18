@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+  <!--头-->
+  <head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8" />
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  </head>
+  <!--内容-->
+  <body>
+    <!--视图  view-->
+    <div id="hello">
+      <h1>自定义过滤器</h1>
+
+      <br />
+      <br />
+    当前时间 {{currentDate}}
+    <br/> 格式化当前时间 {{currentDate|formatDate}}
+    <!-- 带参传入 -->
+    <br/> 格式化当前时间 {{currentDate|formatDate("HH:mm:ss")}}
+      <div style="margin: 100px 20px;">
+        <h2>实现</h2>
+        <ul>
+          <li>要求1：在现有代码的基础上，模仿参考链接，实现动画</li>
+          <li>
+              <a target="_blank" href="https://cn.vuejs.org/v2/guide/transitions.html#CSS-动画">参考链接</a>
+          </li>
+        </ul>
+        <br />
+      </div>
+    </div>
+    <!--视图  view 模板页面 end -->
+  </body>
+
+  <!--引入vue-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    // <!--    视图模型 vm viewmodel -->
+    // 注意：这是全局过滤器
+    Vue.filter('formatDate', function (value,type) {
+      return moment(value).format(type||"YYYY-MM-DD HH:mm:ss dddd")
+    })
+
+
+
+
+    let vm = new Vue({
+      // element 元素选择器 # id
+      el: "#hello",
+      // 数据对象 模型
+      data: {
+        currentDate:new Date()
+      },
+      // 创建
+     filters:{
+         
+      
+     },
+      methods: {
+        destoryVm() {
+          this.$destroy();
+        }
+      }
+    });
+  </script>
+</html>

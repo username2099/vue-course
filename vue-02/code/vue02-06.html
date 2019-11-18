@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue 计算属性VS 方法属性</title>
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <!--    v-model 双向数据绑定 -->
+    <input type="text"  v-model="username" />
+    <br/>
+    <h1>花括号</h1>
+    {{username}}
+    <br/>
+    <h1>V-HTML</h1>
+    <p v-html="username"></p>
+
+    <h1>表达式</h1>
+    <p>输入字符串的长度[username.length]：{{username.length}}</p>
+    <p>当前时间戳[计算属性]：{{usernameLength}}</p>
+    <p>当前时间戳[方法属性]：{{usernameLen()}}</p>
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            username:""
+        },
+        // 计算属性
+        computed:{
+            usernameLength(){
+                return Date.now();
+            }
+        },
+        methods:{
+            usernameLen:function(){
+                return Date.now();
+            }
+        }
+    })
+
+</script>
+
+</html>

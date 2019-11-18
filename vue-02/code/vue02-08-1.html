@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue 计算属性</title>
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>vue 计算属性</h1>
+
+    <h3>
+        当前时间&nbsp;&nbsp;
+        <button v-on:click="updateTimestamp">更新</button>
+
+    </h3>
+    <div>
+    时间(s)：{{timestamp}}
+    <br/>
+    格式化后: {{formatDateTime}}
+    </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            timestamp:parseInt((new Date()).valueOf()/1000),
+        },
+        // 计算属性
+        computed:{
+            // 单向绑定
+            // call usernameAndAge
+            // reference: https://www.w3school.com.cn/jsref/jsref_obj_date.asp
+            formatDateTime(){
+                let now=new Date(this.timestamp*1000);
+                let year=now.getFullYear();
+                let month=now.getMonth()+1;
+                let date=now.getDate();
+                let hour=now.getHours();
+                let minute=now.getMinutes();
+                let second=now.getSeconds();
+                return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+                }
+            },
+        methods:{
+            updateTimestamp(){
+                console.log("updateTimestamp");
+                this.timestamp=parseInt((new Date()).valueOf()/1000);
+            }
+        }
+
+    });
+
+</script>
+
+</html>

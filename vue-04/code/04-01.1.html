@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>绑定监听</h1>
+    <br/>
+    <br/>
+    <button @click="click1">click1</button>
+    <br/>
+    <br/>
+    <button v-on:click="click1">v-on click1</button>
+    <br/>
+    <br/>
+    <button @click="click2(11)">click2()</button>
+    <br/>
+    <br/>
+    <button @click="click3">click33333</button>
+    <button @click="click4(11,$event)">click44444444</button>
+  
+  <div style="margin: 100px 20px;">
+      <h2>实现</h2>
+      <ul>
+          <li>要求：点击按钮，调用click3，能够输出按钮内部的内容，不允许把内容提供参数传给函数 </li>
+          <img src="http://hz1.shuschina.cn/vue/cdn/vue04-20191009235041.png" >
+          <br/>
+      </ul>
+  </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+        },
+        methods:{
+            click1:function(){
+                console.log("click1");
+            },
+            click2:function(val){
+                console.log("click2",val);
+            },
+            // 方法1 默认第一个参数
+            click3:function(e){
+                console.log(e.target.innerHTML);
+            },
+            // 方法2 作为参数传入
+            click4:function(val,e){
+                console.log(val,e.target.innerHTML);
+            },
+        }
+    })
+
+</script>
+
+</html>

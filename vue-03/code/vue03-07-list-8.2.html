@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue list渲染</title>
+   
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>v-for array 综合运用</h1>
+    <input type="text" v-model="searchText" />
+    <ol >
+      <li v-for="(item,index) in filterPersons">
+        {{index}}-&gt;{{ item.name }}&nbsp;({{item.age}})
+      </li>
+    </ol>
+    <button @click="asc">升序</button>
+    <button @click="original">原来顺序</button>
+   <button @click="desc">降序</button>
+    <div style="margin: 100px 20px;">
+        <h2>实现</h2>
+        <ul>
+            <ol>要求：点击升序，降序 能够对 newPersons 进行排序 </ol>
+            <ol>提示1：点击升序 把sortType=1 点击降序,把sortType=-1 , 点击原来顺序 sortType=0</ol>
+            <ol>提示1：在 newPersons 之后，再使用 sort ，根据不同的sortType，</ol>
+            <ol>提示2：参考  , 
+            <a target="_blank" href="https://www.w3school.com.cn/jsref/jsref_sort.asp">sort</a> 
+            
+            </ol>
+            <img src="http://hz1.shuschina.cn/vue/cdn/vue03-list-20191009232511.png" >
+            <br/>
+            <img src="http://hz1.shuschina.cn/vue/cdn/vue03-list-20191009232443.png" >
+        </ul>
+    </div>
+    
+   
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+           persons:[
+               {name:'abcde',age:13},
+               {name:'abddss',age:5},
+               {name:'ddrfaa',age:34},
+               {name:'b10de',age:53},
+               {name:'ttr210',age:17}
+           ],
+           searchText:"",
+           filterPerson:"",
+           sortType:0,
+        },
+        computed:{
+            filterPersons:function(){
+                let newPersons=null;
+                let val=this.searchText;
+                let sortVal=this.sortType;
+                newPersons=this.persons.filter(function (obj){
+                   // 
+                   console.log(obj);
+                   // 此函数如果返回 true 那么该obj就会保存 否则就会从中删除
+                    return obj.name.indexOf(val)!=-1
+                });
+                newPersons.sort(function(obj1,obj2){
+                    // 提示: 打开控制台 查看输出
+                    console.log(obj1.age,obj2.age);
+                   return 1;
+                });
+                return newPersons;
+            }
+        },
+        methods:{
+            asc:function(){
+                this.sortType=1;
+            },
+            desc:function(){
+                this.sortType=-1;
+            },
+            original:function(){
+                this.sortType=0;
+            }
+        }
+    })
+
+</script>
+
+</html>

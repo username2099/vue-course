@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue list渲染</title>
+   
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>v-for array </h1>
+    <ol >
+      <li v-for="(item,index) in persons">
+        {{index}}-&gt;{{ item.name }}&nbsp;({{item.age}})
+      </li>
+    </ol>
+    
+    <h1>v-for object </h1>
+    <ol >
+      <li>
+        
+      </li>
+    </ol>
+   
+   <div style="margin: 100px 20px;">
+       <h2>实现效果</h2>
+       <ul>
+           <ol>要求：在现有代码基础上,显示出persons的第二个元素</ol>
+           <ol>提示：点击参考链接 找到 在 v-for 里使用对象</ol>
+       </ul>
+       <img src="http://hz1.shuschina.cn/vue/cdn/vue03-list-20190926020148.png" >
+       <br/>
+       <a href="https://cn.vuejs.org/v2/guide/list.html#%E5%9C%A8-v-for-%E9%87%8C%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1" target="_blank">
+           参考链接
+        </a>
+   </div>
+   
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+           persons:[
+               {name:'name1',age:10},
+               {name:'name2',age:11},
+               {name:'name3',age:12},
+               {name:'name4',age:13}
+           ]
+        }
+    })
+
+</script>
+
+</html>

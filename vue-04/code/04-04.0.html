@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>表单输入绑定</h1>
+    <br/>
+    <ul>
+    	<li>用户名：<input type="text"  /></li>
+    	<li>密码：<input type="text"  /></li>
+    	<li>
+            <button >提交</button>
+        </li>
+    </ul>
+    
+    
+    
+  
+  <div style="margin: 100px 20px;">
+    <h2>实现</h2>
+    <ul>
+        <li>要求：点击提交，控制台输出文本框中用户名和密码的内容</li>
+        <li>参考：数据双向绑定，事件绑定， <a target="_blank" href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定</a> </li>
+    </ul>
+    <br/>
+    <br/>
+    <img src="http://hz1.shuschina.cn/vue/cdn/vue04-form-20191013220125.png" />
+  </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+           
+        },
+        methods:{
+           
+        }
+    })
+
+</script>
+
+</html>

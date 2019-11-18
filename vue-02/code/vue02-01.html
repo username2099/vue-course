@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <!--    v-model 双向数据绑定 -->
+    <input type="text"  v-model="username" />
+    <br/>
+    <h1>花括号</h1>
+    {{username}}
+    <br/>
+    <h1>V-HTML</h1>
+    <p v-html="username"></p>
+
+    <h1>表达式</h1>
+    <p>转换为大写：{{username.toUpperCase()}}</p>
+    <p>三元表达式：{{""==username ? "NULL" : username}}</p>
+    <!-- 解释每一步 .split('') - reverse() - join('')  -->
+    <p>字符串反转：{{username.split('').reverse().join('')}}</p>
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            username:"username"
+        }
+    })
+
+</script>
+
+</html>

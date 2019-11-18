@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue list渲染</title>
+   
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>v-for array 高级1</h1>
+    <ol >
+      <li v-for="item in persons">
+          <!-- **********  修改代码  *********** -->
+        {{ item.name }}
+      </li>
+    </ol>
+    
+    <div style="margin: 100px 20px;">
+        <h2>实现效果</h2>
+        <img src="http://hz1.shuschina.cn/vue/cdn/vue03-list-20190926005525.png" >
+        <br/>
+        <a href="https://cn.vuejs.org/v2/guide/list.html" target="_blank">
+            参考链接
+         </a>
+    </div>
+   
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            /************  修改代码  ***************/
+           persons:[
+               {name:'name1'},
+               {name:'name2'},
+               {name:'name3'},
+               {name:'name4'}
+           ]
+        }
+    })
+
+</script>
+
+</html>

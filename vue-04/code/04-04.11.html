@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>表单输入绑定</h1>
+    <br/>
+    <ul>
+    	<li>用户名：<input type="text" v-model="username" /></li>
+    	<li>密码：<input type="text" v-model="password" /></li>
+    	<li>
+            个人信息：<textarea v-model="message" cols="20" rows="8" placeholder="请输入内容"></textarea>
+        </li>
+        <li>
+            语言：
+            <label for="checkbox1">c</label>
+            <input type="checkbox" id="checkbox1" value="c"  v-model="checkboxs">
+
+            <label for="checkbox2">java</label>
+            <input type="checkbox" id="checkbox2" value="java"  v-model="checkboxs">
+            
+            <label for="checkbox3">JavaScript</label>
+            <input type="checkbox" id="checkbox3" value="JavaScript"  v-model="checkboxs">
+            
+            <label for="checkbox4">html</label>
+            <input type="checkbox" id="checkbox4" value="html"   v-model="checkboxs">
+            
+        </li>
+        
+        <li>
+            性别：
+            <label for="radio1">男</label>
+            <input type="radio" id="radio1" value="男"  v-model="sex">
+        
+            <label for="radio2">女</label>
+            <input type="radio" id="radio2" value="女"  v-model="sex">
+            
+        </li>
+        
+        <li>
+            年级:
+             <select v-model="grade">
+                <option disabled>请选择</option>
+                <option>大一</option>
+                <option>大二</option>
+                <option>大三</option>
+                <option>大四</option>
+              </select>
+        </li>
+        
+        <!-- 高级写法 -->
+        <li>
+            年级:
+            <!-- 注意 不能绑定到 grades why? -->
+             <!-- <select v-model="grade1" multiple> -->
+             <select v-model="grade1">
+                <option disabled>请选择</option>
+                <option :value="item.id" v-for="(item,index) in grades" :key="item" >{{item.name}}</option>
+              </select>
+        </li>
+        
+        
+    	<li>
+            <button v-on:click="submitData">提交</button>
+        </li>
+    </ul>
+    
+    
+    
+  
+  <div style="margin: 100px 20px;">
+      <h2>实现</h2>
+      <ul>
+          <li>要求1：点击提交，控制台需要输出选中的年级</li>
+         <li>参考：<a target="_blank" href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定[选择框]</a> </li>
+      </ul>
+      <br/>
+      <br/>
+      <img src="http://hz1.shuschina.cn/vue/cdn/vue04-form-20191013225933.png" />
+  </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            username:"111",
+            password:"111",
+            message:"11111",
+            checkboxs:[],
+            sex:'',
+            grade:'',
+            // grade1 设置为数组 select 使用 multiple 多选
+            grade1:[],
+            grades:[
+                {id:1,name:"大一"},
+                {id:2,name:"大二"},
+                {id:3,name:"大三"},
+                {id:4,name:"大四"},
+            ]
+            
+        },
+        methods:{
+            submitData:function(){
+               let username=this.username;
+               let password=this.password;
+               let message=this.message;
+               /********** 简单写法 ***************/
+               let checkboxs=this.checkboxs;
+               let str=checkboxs.join(", ");
+               
+               let sex=this.sex;
+               let grade=this.grade;
+               /******* 高级写法 *******/
+               let grade1=this.grade1;
+               
+                console.log("username:",username);
+                console.log("password:",password);
+                console.log("message:",message);
+                console.log("language:",str);
+                console.log("sex:",sex);
+                console.log("grade:",grade);
+                console.log("grades:",grade1);
+                
+            }
+        }
+    })
+
+</script>
+
+</html>

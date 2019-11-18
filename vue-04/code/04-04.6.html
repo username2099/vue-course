@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+<!--头-->
+<head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8">
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+  
+</head>
+<!--内容-->
+<body>
+
+<!--视图  view-->
+<div id="hello">
+
+    <h1>表单输入绑定</h1>
+    <br/>
+    <ul>
+    	<li>用户名：<input type="text" v-model="username" /></li>
+    	<li>密码：<input type="text" v-model="password" /></li>
+    	<li>
+            个人信息：<textarea v-model="message" cols="20" rows="8" placeholder="请输入内容"></textarea>
+        </li>
+        <li>
+            <!-- 注意 label 的作用 -->
+            <!-- 注意 label 的作用 -->
+            <!-- 注意 label 的作用 -->
+            语言：
+            <label for="checkbox1">c</label>
+            <input type="checkbox" id="checkbox1"   v-model="checkbox_1">
+
+            <label for="checkbox2">java</label>
+            <input type="checkbox" id="checkbox2"   v-model="checkbox_2">
+            
+            <label for="checkbox3">JavaScript</label>
+            <input type="checkbox" id="checkbox3"   v-model="checkbox_3">
+            
+            <label for="checkbox4">html</label>
+            <input type="checkbox" id="checkbox4"   v-model="checkbox_4">
+            
+            
+            
+        </li>
+    	<li>
+            <button v-on:click="submitData">提交</button>
+        </li>
+    </ul>
+    
+    
+    
+  
+  <div style="margin: 100px 20px;">
+      <h2>实现</h2>
+      <ul>
+          <li>要求1：点击提交，控制台需要输出选中的语言,以", "隔开</li>
+         <li>参考：<a target="_blank" href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定[复选框]</a> </li>
+      </ul>
+      <br/>
+      <br/>
+      <img src="http://hz1.shuschina.cn/vue/cdn/vue04-form-20191013223527.png" />
+  </div>
+
+
+</div>
+<!--视图  view 模板页面 end -->
+
+</body>
+
+<!--引入vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script type="text/javascript">
+
+    <!--    视图模型 vm viewmodel -->
+    let vm=new Vue({
+        // element 元素选择器 # id
+        el:"#hello",
+        // 数据对象 模型
+        data:{
+            username:"111",
+            password:"111",
+            message:"11111",
+            checkbox_1:false,
+            checkbox_2:false,
+            checkbox_3:false,
+            checkbox_4:false,
+        },
+        methods:{
+            submitData:function(){
+               let username=this.username;
+               let password=this.password;
+               let message=this.message;
+               /****************  请参考 多个复选框，绑定到同一个数组： 完善代码   **********/
+               /****************  控制台输出的内容要和原来的输出内容保持一致   **********/
+               /********** 费时写法 ***************/
+               /********** 费时写法 ***************/
+               /********** 费时写法 ***************/
+               let checkbox_1=this.checkbox_1;
+               let checkbox_2=this.checkbox_2;
+               let checkbox_3=this.checkbox_3;
+               let checkbox_4=this.checkbox_4;
+               console.log(checkbox_1);
+               let str="";
+               if(checkbox_1){
+                   str+="c, "
+               }
+               if(checkbox_2){
+                   str+="java, "
+               }
+               if(checkbox_3){
+                   str+="JavaScript, "
+               }
+               if(checkbox_4){
+                   str+="html, "
+               }
+               
+               
+                console.log("username:",username);
+                console.log("password:",password);
+                console.log("message:",message);
+                console.log("language:",str);
+                
+            }
+        }
+    })
+
+</script>
+
+</html>
