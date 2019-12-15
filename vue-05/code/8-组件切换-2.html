@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+    <!--头-->
+    <head>
+        <!-- 声明字符编码 -->
+        <meta charset="UTF-8" />
+        <!--  标题 显示位置  -->
+        <title>vue</title>
+        <style></style>
+    </head>
+
+    <!--内容-->
+    <body>
+        <!--视图  view-->
+        <div id="hello">
+            <h1>
+                组件切换
+
+                <a
+                    href="https://cn.vuejs.org/v2/guide/components-registration.html"
+                    target="_blank"
+                    >VUE 官网</a
+                >
+            </h1>
+
+            <a href="" @click.prevent="loginShow=true">Login</a>&nbsp;&nbsp;
+            <a href="" @click.prevent="loginShow=false">Register</a>
+            <br />
+            <br />
+
+            <login v-if="loginShow"></login>
+            <register v-else></register>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2>要求：</h2>
+            <h3>1. 页面刷新只显示登录</h3>
+            <h3>2. 点击 Login 只显示登录 且界面不能刷新</h3>
+            <h3>3. 点击 Register 显示注册 且界面不能刷新</h3>
+            <h3>4. 利用之前所学的知识，比如 if else show 指令</h3>
+            <h3>5. 点击 Register ，Login通过动画移出，Register 通过动画移入</h3>
+            <h3>6. 点击 Login ，Register通过动画移出，Login 通过动画移入</h3>
+            <h4>附加[不做要求]：界面刷新，Login通过动画移入，组件切换时先移出后移入，使用css动画库或js库和钩子函数</h4>
+            <h4>截止时间：2019-12-10 23:59:59</h4>
+            <h4>QQ：2669553551</h4>
+        </div>
+
+        <template id="login">
+            <!-- 注意：外面必须包括一个总标签 -->
+            <div style="color:#008000;">
+                <br />
+                我是自定义组件---LOGIN 登录
+                <br />
+
+                账户：<input type="text" v-model="val1" />
+                <br />
+
+                密码：<input type="text" v-model="val1" />
+            </div>
+        </template>
+
+        <template id="register">
+            <!-- 注意：外面必须包括一个总标签 -->
+            <div style="color:#f12;">
+                <br />
+                我是自定义组件---register 注册
+                <br />
+                账户：<input type="text" v-model="val1" />
+                <br />
+                新密码：<input type="text" v-model="val1" />
+                <br />
+                旧密码：<input type="text" v-model="val1" />
+            </div>
+        </template>
+
+        <!--视图  view 模板页面 end -->
+    </body>
+
+    <!--引入vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script type="text/javascript">
+        let obj = {
+            val1: 200,
+            val2: 300
+        };
+        // 定义全局指令
+        Vue.component("login", {
+            template: "#login",
+            data: () => {
+                return obj;
+            }
+        });
+
+        // 定义全局指令
+        Vue.component("register", {
+            template: "#register",
+            data: () => {
+                return obj;
+            }
+        });
+
+        // <!--    视图模型 vm viewmodel -->
+        let vm = new Vue({
+            // element 元素选择器 # id
+            el: "#hello",
+            // 数据对象 模型
+            data: {
+                loginShow: true,
+                text1: "fffDDeerrqeWWrtUi"
+            },
+            methods: {},
+            // 局部写法 私有指令
+            directives: {}
+        });
+    </script>
+</html>

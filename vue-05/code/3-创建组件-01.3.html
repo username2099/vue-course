@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+    <!--头-->
+    <head>
+        <!-- 声明字符编码 -->
+        <meta charset="UTF-8" />
+        <!--  标题 显示位置  -->
+        <title>vue</title>
+        <style></style>
+    </head>
+
+    <!--内容-->
+    <body>
+        <!--视图  view-->
+        <div id="hello">
+            <h1>
+                创建组件3
+
+                <a
+                    href="https://cn.vuejs.org/v2/guide/components-registration.html"
+                    target="_blank"
+                    >VUE 官网</a
+                >
+            </h1>
+
+            <br />
+            <br />
+
+            <input type="text" v-model="text1" />
+
+            <br />
+            <br />
+            <test1></test1>
+            <test2></test2>
+            <test3></test3>
+        </div>
+        <!--视图  view 模板页面 end -->
+    </body>
+
+    <!--引入vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script type="text/javascript">
+        // 定义全局指令
+        Vue.component(
+            "test1",
+            Vue.extend({
+                template: "<h2>这是自定义组件 test1 </h2>"
+            })
+        );
+
+        // 定义全局指令
+        Vue.component("test2", {
+            template: "<h2>这是自定义组件 test2 </h2>"
+        });
+
+        /*******************  注意 ******************/
+        /*******************  注意 ******************/
+        /*******************  注意 ******************/
+        // 问题：为什么 <h3>test3 bottom<h3> 没有显示
+        // 定义全局指令
+        // 解决方法 最外面加个标签
+        Vue.component("test3", {
+            template:
+                "<div><h2>这是自定义组件 test3 top</h2><h3>test3 bottom<h3></div>"
+        });
+
+        // 思考：why
+        // Vue.component("test3", {
+        //     template:
+        //         "<template><h2>这是自定义组件 test3 top</h2><h3>test3 bottom<h3></template>"
+        // });
+
+        // <!--    视图模型 vm viewmodel -->
+        let vm = new Vue({
+            // element 元素选择器 # id
+            el: "#hello",
+            // 数据对象 模型
+            data: {
+                text1: "fffDDeerrqeWWrtUi"
+            },
+            methods: {},
+            // 局部写法 私有指令
+            directives: {}
+        });
+    </script>
+</html>

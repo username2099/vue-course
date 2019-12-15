@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+    <!--头-->
+    <head>
+        <!-- 声明字符编码 -->
+        <meta charset="UTF-8" />
+        <!--  标题 显示位置  -->
+        <title>vue</title>
+        <style></style>
+    </head>
+    <!--内容-->
+    <body>
+        <!--视图  view-->
+        <div id="hello">
+            <h1>
+                创建组件2
+
+                <a
+                    href="https://cn.vuejs.org/v2/guide/components-registration.html"
+                    target="_blank"
+                    >VUE 官网</a
+                >
+            </h1>
+
+            <br />
+            <br />
+
+            <input type="text" v-model="text1" />
+
+            <br />
+            <br />
+            <test1></test1>
+            <test2></test2>
+        </div>
+        <!--视图  view 模板页面 end -->
+    </body>
+
+    <!--引入vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script type="text/javascript">
+        // 定义全局指令
+        Vue.component(
+            "test1",
+            Vue.extend({
+                template: "<h2>这是自定义组件 test1 </h2>"
+            })
+        );
+
+        // 定义全局指令
+        Vue.component("test2", {
+            template: "<h2>这是自定义组件 test2 </h2>"
+        });
+
+        // <!--    视图模型 vm viewmodel -->
+        let vm = new Vue({
+            // element 元素选择器 # id
+            el: "#hello",
+            // 数据对象 模型
+            data: {
+                text1: "fffDDeerrqeWWrtUi"
+            },
+            methods: {},
+            // 局部写法 私有指令
+            directives: {}
+        });
+    </script>
+</html>
