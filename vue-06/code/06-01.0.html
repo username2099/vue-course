@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+  <!--头-->
+  <head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8" />
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+    <style>
+        /* vue 解析之前 类似骨架 */
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+  </head>
+  <!--内容-->
+  <body>
+    <!--视图  view-->
+    <div id="hello">
+      <h1>自定义指令</h1>
+
+      <br />
+      <br />
+      
+     <!--  -->
+     <input type="text" val0 v-model="str" v-focus1 >
+     <br/>
+     <br/>
+     
+     <input v-if="show" type="text" val1 v-model="str2" v-focus1 >
+     
+     <br/>
+     <br/>
+     <button type="button" @click="show=!show">切换 show {{show}}</button>
+     
+    </div>
+    <!--视图  view 模板页面 end -->
+  </body>
+
+  <!--引入vue-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <script type="text/javascript">
+    // 定义全局指令
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive('focus', {
+      // 当被绑定的元素插入到 DOM 中时……
+      inserted: function (el,binding) {
+          console.log("el",el);
+          console.log("binding",binding);
+        // 聚焦元素
+        el.focus();
+      }
+    })
+      
+    // <!--    视图模型 vm viewmodel -->
+    let vm = new Vue({
+      // element 元素选择器 # id
+      el: "#hello",
+      // 数据对象 模型
+      data: {
+        str:"123",
+        str2:"abc",
+        show:true
+      },
+      methods: {
+      },
+      // 局部写法 私有指令
+      directives:{
+         //    focus: {
+         //      // 指令的定义
+         //      inserted: function (el) {
+         //        el.focus()
+         //      }
+         //    }
+        focus1:{
+            bind: function (el,binding,vnode) {  
+                console.log("call bind");
+                console.log("el",el);
+                console.log("binding",binding);
+                console.log("vnode",vnode);
+                // el.focus();
+            },
+            inserted: function (el,binding) {
+                console.log("call inserted");
+                console.log("el",el);
+                console.log("binding",binding);
+                el.focus();
+            },
+            update: function (el,binding) {
+                console.log("call update");
+                console.log("el",el);
+                console.log("binding",binding);
+                // el.focus();
+            },
+            componentUpdated:function (el,binding) {
+                console.log("call componentUpdated");
+                console.log("el",el);
+                console.log("binding",binding);
+                // el.focus();
+            },
+            unbind: function (el,binding) {
+                console.log("call unbind");
+                console.log("el",el);
+                console.log("binding",binding);
+                // el.focus();
+            },
+        }
+         
+      }
+    });
+  </script>
+</html>

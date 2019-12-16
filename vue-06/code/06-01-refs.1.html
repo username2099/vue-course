@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--声明语言-->
+<html lang="en">
+  <!--头-->
+  <head>
+    <!-- 声明字符编码 -->
+    <meta charset="UTF-8" />
+    <!--  标题 显示位置  -->
+    <title>vue</title>
+    <style>
+        /* vue 解析之前 类似骨架 */
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+  </head>
+  <!--内容-->
+  <body>
+    <!--视图  view-->
+    <div id="hello">
+      <h1>refs</h1>
+
+      <br />
+      <br />
+      
+      <button type="button" @click="click1">click</button>
+      <div ref="text">refs ...</div>
+      <div v-cloak>
+          {{content}}
+      </div> 
+     
+    </div>
+    <!--视图  view 模板页面 end -->
+  </body>
+
+  <!--引入vue-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <script type="text/javascript">
+      alert("---------");
+    // <!--    视图模型 vm viewmodel -->
+    let vm = new Vue({
+      // element 元素选择器 # id
+      el: "#hello",
+      // 数据对象 模型
+      data: {
+        content:"this is content ..."
+      },
+      
+      methods: {
+          click1(){
+             alert(this.$refs.text.textContent)
+          }
+      }
+    });
+  </script>
+</html>
